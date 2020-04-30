@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assertive test 7</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <div style="position: absolute; bottom: 0px; left: 0px;">
+            <p>Click submit button to see message</p>
+            <p>
+                <input type="submit" name="button" id="button" value="Submit" role="button">
+            </p>
+        </div> 
+
+        <div id="errors" aria-live="assertive" aria-atomic="true" aria-relevant="text" style="display: none" tabindex="0" role="alert">
+            <p>Ala ma kota? A kot ma Alę...<br />
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script>
+
+            var elementX = document.getElementById("errors");
+            var alertText = document.createTextNode("");
+
+            elementX.onkeydown = triggeringError;
+
+            $("#button").on("click", function (e) {
+                document.getElementById("errors").setAttribute("style", "display: block");
+                elementX.focus();
+                console.log("Alert");
+            });
+
+            $('#error').trigger("click");
+
+            var triggeringError = function () {
+                elementX.addEventListener('click', event => {
+                    console.log("Event triggered" + event.detail);
+                });
+
+                var event = new MouseEvent('click', {
+                    'view': window,
+                    'bubles': true,
+                    'cancelable': true
+                });
+
+                elementX.dispatchEvent(event);
+
+                $("#errors").trigger('action');
+                $("#errors").click();
+
+                document.getElementById("errors").click();
+            }
+
+        </script>
+    </body>
+</html>

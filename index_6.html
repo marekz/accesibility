@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assertive test 5</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <p>The onclick event is used to trigger a function when an element is clicked on.</p>
+
+<p>Click the button to trigger a function that will output "Hello World" in a p element with id="demo".</p>
+
+<button onclick="myFunction()">Click me</button>
+
+<p aria-live="assertive" role="alert" id="demo"></p>
+
+<script>
+function myFunction() {
+ document.getElementById("demo").innerHTML = "Hello World";
+}
+</script>
+
+    </body>
+</html>
